@@ -29,12 +29,13 @@ public class Finish : MonoBehaviour
                 string json = JsonUtility.ToJson(c);
                 File.WriteAllText(Application.dataPath + "/_Scripts/PlayerData/CoinConfig.json", json);
                 int lv = player.GetComponent<CoinCount>().level;
-                if (lv <= 3)
+                if (lv < 3)
                 {
                     StartCoroutine(ReloadCurrentLevel());
                 } else if (lv == 3)
                 {
                     SceneManager.LoadScene("Boss");
+                    
                 } else if (lv > 3)
                 {
                     lv = 0;
